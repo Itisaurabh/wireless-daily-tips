@@ -3,7 +3,7 @@ import os
 import random
 import requests
 
-today = datetime.datetime.utcnow().date().isoformat()
+today = datetime.datetime.now(datetime.UTC).date().isoformat()
 
 with open("wifi_news_digest_source.txt", "r") as f:
     entries = [line.strip() for line in f if "-->" in line]
@@ -17,7 +17,7 @@ for entry in sample:
 content = "\n\n".join(digest)
 
 update_url = f"https://api.github.com/gists/{os.environ['GIST_ID']}"
-headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}
+headers = {"Authorization": f"Bearer {os.environ['token']}"}
 payload = {
     "files": {
         "wifi_news_digest.txt": {
