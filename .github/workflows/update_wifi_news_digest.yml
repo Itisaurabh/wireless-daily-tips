@@ -1,0 +1,56 @@
+name: Update Wi-Fi News Digest
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # Runs daily at 9:30 AM IST
+  workflow_dispatch:
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate Wi-Fi News Digest
+        env:
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GITHUB_TOKEN: ${{ secrets.token }}
+        run: |
+          import datetime
+          import os
+          import random
+          import requests
+
+          today = datetime.datetime.utcnow().date().isoformat()
+          with open("wifi_news_digest_source.txt", "r") as f:
+              entries = [line.strip() for line in f if "-->" in line]
+
+          sample = random.sample(entries, k=3)
+          digest = [f"{today}:"]
+          for entry in sample:
+              title, url = entry.split("-->")
+              digest.append(f"• {title.strip()}\n  → {url.strip()}")
+
+          content = "\n\n".join(digest)
+          update_url = f"https://api.github.com/gists/{os.environ['GIST_ID']}"
+          headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}
+          payload = {
+              "files": {
+                  "wifi_news_digest.txt": {
+                      "content": content
+                  }
+              }
+          }
+
+          response = requests.patch(update_url, json=payload, headers=headers)
+          if response.status_code != 200:
+              raise Exception(f"Failed to update gist: {response.content}")
