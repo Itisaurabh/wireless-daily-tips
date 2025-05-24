@@ -23,7 +23,7 @@ jobs:
       - name: Update Gist with today's tip
         env:
           GIST_ID: ${{ secrets.GIST_ID }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           import datetime
           import os
