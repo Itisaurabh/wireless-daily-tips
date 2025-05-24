@@ -1,3 +1,4 @@
+2025-05-24: A mismatch in DTIM intervals between APs can cause clients to miss beacons, delaying roaming or increasing battery use.
 2025-05-25: Lowering beacon interval may increase client association speed, but too low can cause airtime overhead.
 2025-05-26: 802.11k-enabled clients use neighbor reports to roam more efficiently—make sure AP and client support it.
 2025-05-27: High retransmission rates can point to interference or low SNR on the radio.
