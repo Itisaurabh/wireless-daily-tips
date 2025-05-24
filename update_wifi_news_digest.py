@@ -17,7 +17,7 @@ for entry in sample:
 content = "\n\n".join(digest)
 
 update_url = f"https://api.github.com/gists/{os.environ['GIST_ID']}"
-headers = {"Authorization": f"Bearer {os.environ['token']}"}
+headers = {"Authorization": f"Bearer {os.environ['TOKEN']}"}
 payload = {
     "files": {
         "wifi_news_digest.txt": {
