@@ -1,0 +1,5 @@
+Wi-Fi 7 APs starting to ship with Intel BE200 support — early tests show big MLO gains. --> https://wifinowglobal.com/news/2025/wifi7-rollout-intel-be200
+Rowell Dionicio breaks down 802.11v behavior during roaming in his latest tweet thread. --> https://twitter.com/rowelldionicio/status/1234567890
+WLAN Pros Podcast: "The Hidden Impact of Beacon Overhead" now available. --> https://wlanpros.com/podcast-ep99
+CWNP Blog post: DFS boot scan delays explained for engineers and customers. --> https://cwnp.com/blog/dfs-boot-delays/
+Wireless LAN Professionals release new lab test template for Wi-Fi 6E AP validation. --> https://wlanpros.com/lab-template-wifi6e/
